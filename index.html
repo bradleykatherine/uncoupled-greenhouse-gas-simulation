@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methane Simulation</title>
+  <!-- Import p5.js library for rendering and interactivity -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <!-- Import custom JavaScript files for the simulation -->
+  <script src="earthVisualization.js" defer></script>
+  <script src="temperatureOverlay.js" defer></script>
+  <script src="simulation.js" defer></script>
+  <style>
+    /* Basic styling for the webpage layout */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background: #f4f4f4; /* Light gray background */
+    }
+
+    #title {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 20px;
+    }
+
+    #simulation-container {
+      margin-bottom: 20px;
+      width: 600px;
+      height: 400px;
+      background: #000; /* Black background for simulation canvas */
+    }
+
+    #controls {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 2px solid #333; /* Enclosure border */
+      padding: 15px;
+      margin-top: 20px;
+      background: #fff; /* White background for contrast */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+
+    #instructions {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .slider-group {
+      margin-bottom: 15px;
+    }
+
+    .slider-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #000;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none; /* Remove default styling */
+      width: 200px;
+      height: 5px;
+      background: white; /* Background color for slider */
+      border: 1px solid black; /* Black border */
+      border-radius: 5px; /* Rounded edges */
+      outline: none; /* Remove focus outline */
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px; /* Thumb width */
+      height: 15px; /* Thumb height */
+      background: black; /* Thumb color */
+      border-radius: 50%; /* Make thumb circular */
+      cursor: pointer; /* Pointer cursor for interaction */
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      background: black;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Title of the simulation -->
+  <div id="title">Methane Simulation</div>
+
+  <!-- Main content containing simulation and controls -->
+  <div id="main-content">
+    <!-- Simulation rendering container -->
+    <div id="simulation-container"></div>
+
+    <!-- Controls for sliders and instructions -->
+    <div id="controls">
+      <p id="instructions">Adjust the sliders to explore methane's impact<br>on the atmosphere.</p>
+
+      <div class="slider-group">
+        <label for="methane-slider">Baseline CH₄ (Methane) Concentration</label>
+        <input id="methane-slider" type="range" min="0" max="100" value="50">
+      </div>
+
+      <div class="slider-group">
+        <label for="co2-slider">Baseline CO₂ (Carbon Dioxide) Concentration</label>
+        <input id="co2-slider" type="range" min="0" max="100" value="50">
+      </div>
+
+      <div class="slider-group">
+        <label for="particle-slider">Particle Count</label>
+        <input id="particle-slider" type="range" min="0" max="1000" value="0">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
